@@ -1,0 +1,62 @@
+---
+title: "Survey, CME Quiz & Poll Platform"
+summary: "Configurable Survey, CME Quiz, and Poll modules with a dynamic form engine supporting 12+ question types, conditional logic, and CME scoring — backed by a PostgreSQL + MongoDB data model."
+date: "2025-05-22"
+role: "Software Development Engineer · Docquity"
+featured: true
+tags: ["Full-stack", "Dynamic Forms", "Java", "Analytics"]
+stack: ["Angular", "NgRx", "RxJS", "Java", "Spring Boot", "PostgreSQL", "MongoDB", "Redis"]
+repo: ""
+demo: ""
+metrics:
+  - label: "Question types"
+    value: "12+"
+  - label: "Config model"
+    value: "PostgreSQL + MongoDB"
+  - label: "Backend"
+    value: "Java · Spring Boot"
+  - label: "Reporting"
+    value: "Question-level analytics"
+---
+
+## Problem
+
+Content teams needed to run surveys, accredited CME quizzes, and polls for
+healthcare professionals — each historically a separate, hard-coded build.
+Creating a new one required engineering time, formats couldn't share logic, and
+capturing responses for **CME scoring and compliance reporting** was inconsistent.
+
+## Approach
+
+I led the build of configurable Survey, CME Quiz, and Poll modules inside an
+enterprise admin platform, treating all three as one engine:
+
+- **Dynamic multi-step form creation** with **12+ question types**, validations,
+  conditional visibility, and scoring rules — authored in the admin platform, not
+  in code.
+- **A dynamic rendering and conditional-logic engine** built with Angular
+  Reactive Forms, NgRx, and RxJS, supporting configurable sections, questions, and
+  workflows without application changes.
+- **Backend services in Java and Spring Boot** (PostgreSQL, MongoDB, Redis) to
+  manage content configurations, user responses, analytics, and CME scoring at
+  scale.
+- **A deliberate polyglot data model**: normalized **PostgreSQL** for form
+  metadata and **MongoDB** for response storage — flexible schema evolution
+  without sacrificing analytics and reporting.
+
+## Trade-offs
+
+- **Two stores vs. one.** Splitting metadata (PostgreSQL) from responses
+  (MongoDB) adds operational surface but matches each workload to the right tool:
+  relational structure for forms, document flexibility for varied responses.
+- **Generic engine vs. bespoke screens.** The engine cost more up front but
+  eliminated the recurring engineering cost of every new survey, quiz, or poll.
+
+## Impact
+
+- A single platform for surveys, CME quizzes, and polls with **12+ configurable
+  question types** and conditional logic.
+- **Question-level analytics, participation tracking, and compliance reporting**,
+  integrated with client apps and webinar-based learning workflows.
+- A schema model that evolves with new question types while keeping reporting
+  efficient.

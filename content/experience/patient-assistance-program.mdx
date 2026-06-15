@@ -1,0 +1,67 @@
+---
+title: "Patient Assistance Program (PAP) Platform"
+summary: "Led the frontend modernization of a multi-tenant healthcare platform serving 20+ pharma clients and 30k–45k patients — built on a metadata-driven dynamic form engine with full role-based access control."
+date: "2026-04-10"
+role: "Software Development Engineer · Docquity"
+featured: true
+tags: ["Angular", "Dynamic Forms", "RBAC", "Multi-tenant"]
+stack: ["Angular 20", "NgRx", "RxJS", "Reactive Forms", "TypeScript", "SCSS"]
+repo: ""
+demo: ""
+metrics:
+  - label: "Pharma clients"
+    value: "20+"
+  - label: "Active programs"
+    value: "40–50"
+  - label: "Patients served"
+    value: "30k–45k"
+  - label: "Doctors"
+    value: "4.5k"
+---
+
+## Problem
+
+Patient Assistance Programs help patients access medication and support, but each
+of the 20+ pharma clients runs them differently — different enrollment steps,
+consent requirements, benefits, and approval chains. The platform was a legacy
+Angular 10 app where every new program meant custom code. That didn't scale to
+**40–50 active programs** serving **30k–45k patients** and **4.5k doctors**, and
+the codebase was getting harder to change, not easier.
+
+## Approach
+
+I led the frontend redesign around a single idea: **configuration, not code,
+should define a program.**
+
+- **A metadata-driven dynamic form engine** built with Angular, NgRx, RxJS, and
+  Reactive Forms, with **20+ configurable field types**. Onboarding, enrollment,
+  consent management, benefit delivery, and program administration are all
+  described as configuration the engine renders.
+- **Advanced form capabilities** — nested and recursive forms, API-driven dynamic
+  dropdowns, file uploads, consent workflows, configurable validations, and
+  conditional rendering — so new workflows ship without new code.
+- **A modern Angular 20 architecture** using standalone components, lazy-loaded
+  modules, and route-level dependency injection with NgRx state management —
+  improving maintainability, shrinking bundle size, and speeding feature delivery.
+- **A Role-Based Access Control framework** with route guards, HTTP interceptors,
+  and permission-driven UI rendering, securing multi-role workflows across
+  patients, doctors, pharma administrators, approvers, and operations teams.
+
+## Trade-offs
+
+- **Engine generality vs. delivery speed.** A configurable engine is a bigger
+  up-front investment than hand-building screens, but it removed the recurring
+  per-program engineering cost — the whole reason the legacy app didn't scale.
+- **Flexibility vs. testability.** Recursive forms and conditional logic can
+  explode the state space, so I kept the configuration model declarative and
+  bounded rather than letting it become arbitrary code.
+
+## Impact
+
+- Modernized a legacy Angular 10 app into a **multi-tenant platform** serving
+  **20+ pharma clients** and **40–50 active programs**.
+- Powered workflows for **30k–45k patients** and **4.5k doctors** through a single
+  configurable engine.
+- Made launching a new program a configuration task instead of a development
+  cycle, while enforcing secure, role-aware access across five distinct user
+  types.

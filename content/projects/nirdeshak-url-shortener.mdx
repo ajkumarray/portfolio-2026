@@ -1,0 +1,57 @@
+---
+title: "Nirdeshak — URL Shortener"
+summary: "A production-ready full-stack URL shortener with JWT auth, click analytics, and expiration-based link management — shipped end to end with a fully automated CI/CD pipeline to AWS."
+date: "2024-02-14"
+role: "Personal Project"
+featured: false
+tags: ["Full-stack", "Spring Boot", "CI/CD", "AWS"]
+stack: ["React", "TypeScript", "Spring Boot", "PostgreSQL", "Docker", "AWS"]
+repo: "https://github.com/ajkumarray/nirdeshak"
+demo: "https://url.ajkumarray.com/"
+metrics:
+  - label: "Stack"
+    value: "React · Spring Boot"
+  - label: "Auth"
+    value: "JWT"
+  - label: "Pipeline"
+    value: "GitHub Actions → AWS EC2"
+  - label: "Status"
+    value: "Live in production"
+---
+
+## Problem
+
+I wanted a URL shortener I fully controlled — one with real authentication,
+expiring links, and usage analytics — and I wanted to take it all the way to a
+production deployment with a proper pipeline, not just a localhost demo.
+
+## Approach
+
+A full-stack service, built and shipped end to end:
+
+- **Frontend in React + TypeScript**, **backend in Spring Boot + PostgreSQL**,
+  containerized with **Docker** — supporting both authenticated and anonymous URL
+  creation with **expiration-based link management**.
+- **JWT-based authentication** with role-aware URL management, **click analytics**,
+  and clean **REST APIs** for the full URL lifecycle and redirect tracking.
+- **A fully automated CI/CD pipeline** using **GitHub Actions, Docker, GHCR, AWS
+  EC2, and AWS Secrets Manager**, taking the app from commit to production with no
+  manual steps.
+
+## Trade-offs
+
+- **Readable vs. compact short codes.** Shorter codes look better but collide
+  sooner; I picked a length that balances collision-resistance against brevity for
+  the expected volume.
+- **Redirect speed vs. analytics.** Recording a click can't slow the redirect, so
+  analytics are captured without blocking the user-facing hop.
+
+## Impact
+
+A live, self-hosted alternative to commercial shorteners — and a complete,
+end-to-end demonstration of building authentication, data modeling, analytics, and
+an automated deployment pipeline into one production service.
+
+**Links:** [Live demo](https://url.ajkumarray.com/) ·
+[Backend repo](https://github.com/ajkumarray/margdarshak) ·
+[Frontend repo](https://github.com/ajkumarray/nirdeshak)
