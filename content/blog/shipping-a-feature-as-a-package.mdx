@@ -1,0 +1,54 @@
+---
+title: "Ship the Feature as a Package, Not a Copy-Paste"
+summary: "How turning authentication and onboarding into an installable npm package — instead of rebuilding it per app — let ops reconfigure flows in minutes and kept the experience consistent across apps."
+date: "2026-01-20"
+tags: ["Developer Experience", "Architecture", "TypeScript"]
+---
+
+The third time you build the same login screen, you should stop building login
+screens. Here's how treating onboarding as a *product* — an installable package —
+beat rebuilding it for every app.
+
+## The trap: bespoke every time
+
+Each app reinvented auth slightly differently: OTP in one, password-first in
+another, social login bolted on inconsistently, branding hard-coded. New apps
+spent weeks rebuilding flows that already existed, and the small differences
+leaked into a fragmented user experience.
+
+## Reframe: configuration over code
+
+The fix was to design onboarding as a configurable package any Node app can
+install:
+
+- **Pluggable methods** — OTP, MPIN, password, Google/Facebook SSO — turned on
+  and ordered via config, not code.
+- **Branding and copy controlled from an admin panel**, so non-engineers tailor
+  the experience per product without a deploy.
+- **A backend for configuration + auth workflows**, with a cache layer so config
+  reads stay fast.
+
+## The hard part isn't the auth — it's the boundaries
+
+Building a *reusable* package is harder than building a one-off, and the
+difficulty is mostly API design:
+
+- **Constrain the configuration surface.** Total flexibility becomes an
+  untestable matrix of states. A well-defined config schema keeps the
+  flexibility honest and the package testable.
+- **Version like a library author.** Once a second app depends on you, every
+  change is a compatibility decision. Semantic versioning and a changelog stop
+  being optional.
+- **Make the defaults good.** The fastest integration is one where the defaults
+  are sensible and you only configure what's different.
+
+## Why it was worth it
+
+The payoff compounds with every adopter. Across four Angular apps and 15–20
+clients, a new app gets full auth and onboarding by installing the package, and
+operations can reconfigure onboarding journeys, branding, and login methods in
+**5–10 minutes** instead of waiting for a release. Because every app shares the
+same configurable core, the onboarding experience finally felt consistent.
+
+Build it once, configurably, and let the next team `npm install` instead of
+copy-paste.

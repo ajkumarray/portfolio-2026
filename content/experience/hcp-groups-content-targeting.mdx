@@ -1,0 +1,63 @@
+---
+title: "HCP Groups & Content Targeting"
+summary: "A reusable audience segmentation platform for healthcare professionals — defining targetable groups across surveys, CMEs, polls, and webinars — built during a migration from a MySQL monolith to Neo4j-powered microservices."
+date: "2024-10-08"
+role: "Software Development Engineer · Docquity"
+featured: true
+tags: ["Microservices", "Neo4j", "Segmentation", "Angular"]
+stack: ["Angular", "Java", "Spring Boot", "Neo4j", "MySQL", "Microservices"]
+repo: ""
+demo: ""
+metrics:
+  - label: "Targeting filters"
+    value: "6 dimensions"
+  - label: "Architecture"
+    value: "MySQL monolith → Neo4j services"
+  - label: "Reuse"
+    value: "Across all content types"
+  - label: "Access model"
+    value: "Public / private groups"
+---
+
+## Problem
+
+Every content type — surveys, CMEs, polls, webinars — reinvented its own audience
+logic for choosing which healthcare professionals to reach. There was no reusable
+notion of "this group of HCPs," so targeting was repetitive, inconsistent, and
+hard to maintain as the relationships between professionals, pharma companies,
+associations, and communities grew.
+
+## Approach
+
+I worked on a group-based segmentation and content-targeting platform that makes
+audiences a reusable, first-class concept:
+
+- **Angular administration modules** for community and group management —
+  public/private groups, role-based memberships, dynamic user enrollment, and
+  configurable access policies.
+- **Reusable audience segments** defined with **six filter dimensions**: pharma,
+  community, association, country, segment, and user role — eliminating repeated
+  targeting logic across content types.
+- **Contributed to the migration from a MySQL-based monolith to a Neo4j-powered
+  microservices architecture**, so relationship-heavy queries became efficient
+  graph traversals and enabled personalized content recommendations.
+- **Dynamic audience targeting** spanning HCPs, pharma companies, associations,
+  communities, programs, and countries.
+
+## Trade-offs
+
+- **Graph vs. relational.** Modeling HCP relationships in Neo4j fits traversal-
+  heavy segmentation far better than join-heavy SQL, at the cost of running graph
+  infrastructure alongside the system of record.
+- **Reusable groups vs. per-use targeting.** A shared audience model adds a layer
+  of abstraction, but it removed duplicated targeting logic and kept segments
+  consistent everywhere they're used.
+
+## Impact
+
+- Audience definitions that are **defined once and reused** across surveys, CMEs,
+  polls, and webinars.
+- Six-dimension targeting (pharma, community, association, country, segment, role)
+  giving operations teams flexible, consistent segmentation.
+- Part of the architectural shift to graph-backed microservices that made
+  relationship queries and personalized recommendations practical.

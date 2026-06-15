@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode (driven by next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Design tokens ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0.75rem;
+
+  /* Soft, warm-neutral light theme */
+  --background: #faf9f7;
+  --foreground: #21201c;
+
+  --card: #ffffff;
+  --card-foreground: #21201c;
+
+  --muted: #f1efeb;
+  --muted-foreground: #6f6b64;
+
+  --border: #e7e3dc;
+  --input: #e7e3dc;
+  --ring: #5b5bd6;
+
+  /* Muted indigo accent */
+  --primary: #5b5bd6;
+  --primary-foreground: #ffffff;
+
+  --accent: #ecebfb;
+  --accent-foreground: #4f46e5;
 }
 
+.dark {
+  /* Warm near-black dark theme */
+  --background: #121113;
+  --foreground: #ededec;
+
+  --card: #1a181c;
+  --card-foreground: #ededec;
+
+  --muted: #1d1b20;
+  --muted-foreground: #9d9aa3;
+
+  --border: #2a2730;
+  --input: #2a2730;
+  --ring: #8284f4;
+
+  --primary: #8284f4;
+  --primary-foreground: #14131a;
+
+  --accent: #211f2e;
+  --accent-foreground: #c7c5f7;
+}
+
+/* ---------- Map tokens to Tailwind ---------- */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-sm: calc(var(--radius) - 0.5rem);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------- Base ---------- */
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Smooth theme transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Pleasant text selection */
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

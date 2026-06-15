@@ -1,0 +1,60 @@
+---
+title: "When SQL Is the Bottleneck: Migrating Relationships to a Graph"
+summary: "Why we moved healthcare-professional relationships out of a MySQL monolith and into Neo4j for audience targeting — and how to tell when a graph is the right call."
+date: "2026-03-04"
+tags: ["Neo4j", "Databases", "Microservices"]
+---
+
+We had a segmentation feature that got slower every month, and no amount of index
+tuning fixed it. The lesson: sometimes the query isn't slow because it's
+written badly — it's slow because the *data model* is fighting the access
+pattern.
+
+## The symptom
+
+We segment healthcare professionals (HCPs) by their roles, hospital and
+association affiliations, and connections to other HCPs. In a relational schema
+that meant join tables: HCP ↔ affiliation, HCP ↔ association, HCP ↔ HCP. A
+"find everyone two hops from this group" query became a stack of joins whose cost
+grew with the network.
+
+## Why relational struggles here
+
+Relational databases are superb at set operations over rows. They are *not*
+optimized for **variable-depth traversal** — "friends of friends of friends." Each
+hop is another join, and the optimizer can't always keep up as the graph widens.
+You feel this exactly when relationships, not attributes, are the thing you query.
+
+## The graph reframe
+
+In Neo4j, those relationships are first-class edges, and traversal is the native
+operation:
+
+```cypher
+MATCH (h:HCP)-[:AFFILIATED_WITH]->(:Hospital)<-[:AFFILIATED_WITH]-(peer:HCP)
+WHERE h.id = $id
+RETURN DISTINCT peer
+```
+
+The query reads like the question you're actually asking. Adding a new
+relationship type is a new edge, not a schema migration and another join table.
+
+## The pattern that worked
+
+- **Keep your system of record relational.** PostgreSQL stayed the source of
+  truth for profile data; the graph is *derived* from it. Graph for traversal,
+  relational for truth.
+- **Sync, don't dual-write blindly.** The graph is rebuilt/updated from
+  PostgreSQL, which means a small consistency lag — fine for audience targeting,
+  and worth making observable so you'd notice if it drifted.
+- **Cache the hot segments.** Frequently-targeted groups resolve from Redis
+  without re-traversing at all.
+
+## When *not* to reach for a graph
+
+If your queries are mostly "filter rows by attributes," a graph database adds
+operational cost for little benefit. The signal to switch is when **relationships
+themselves are the query** and depth is variable. That was exactly our case —
+moving HCP relationships out of a MySQL monolith and into Neo4j-backed
+microservices made reusable, relationship-aware audience targeting practical
+across surveys, CMEs, polls, and webinars.

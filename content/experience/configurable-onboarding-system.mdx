@@ -1,0 +1,62 @@
+---
+title: "Configurable Onboarding & Authentication Platform"
+summary: "A reusable onboarding and auth platform — shipped as an npm package — used across 4 Angular apps and 15–20 pharma clients, cutting onboarding configuration turnaround from release cycles to 5–10 minutes."
+date: "2025-11-12"
+role: "Software Development Engineer · Docquity"
+featured: true
+tags: ["npm Package", "Auth / SSO", "Angular", "Config-driven"]
+stack: ["TypeScript", "Angular", "NgRx", "PostgreSQL", "Webpack", "SCSS"]
+repo: ""
+demo: ""
+metrics:
+  - label: "Angular apps served"
+    value: "4"
+  - label: "Pharma clients"
+    value: "15–20"
+  - label: "Healthcare programs"
+    value: "30+"
+  - label: "Config turnaround"
+    value: "5–10 min"
+---
+
+## Problem
+
+Onboarding and authentication were rebuilt — slightly differently — in every
+Angular app. Across **4 applications**, **15–20 pharma clients**, and **30+
+healthcare programs** with multi-country and multi-language requirements, every
+tweak to a login method or onboarding step meant a code change and a release.
+Operations teams couldn't move at the speed the business needed.
+
+## Approach
+
+I led the build of a configurable onboarding and authentication platform that
+teams install rather than rebuild:
+
+- **A reusable npm package** (TypeScript, SCSS, Webpack) that dynamically renders
+  onboarding workflows and authentication experiences, dropping cleanly into any
+  of the client Angular applications.
+- **An Angular admin portal** backed by **PostgreSQL configuration management**,
+  letting product and operations teams control onboarding journeys, user
+  attributes, branding, and login methods **without a deployment**.
+- **Customizable login/signup flows** supporting OTP, MPIN, Password, and Google,
+  Microsoft, and Meta **SSO** — composed through configuration.
+- **Scalable REST APIs and configuration services** designed for low-latency
+  access to onboarding configs and reliable production performance.
+
+## Trade-offs
+
+- **Shared package vs. per-app freedom.** A shared package demands versioning
+  discipline and backward compatibility, but it pays off the moment a second app
+  adopts it — and four did.
+- **Config flexibility vs. guardrails.** Letting ops change flows without deploys
+  is powerful and risky, so the configuration surface is schema-bounded and
+  validated rather than free-form.
+
+## Impact
+
+- One platform powering onboarding across **4 Angular apps**, **15–20 pharma
+  clients**, and **30+ programs**.
+- Reduced onboarding configuration turnaround from full release cycles to **5–10
+  minutes**, moving control from engineering to operations.
+- Unified six authentication methods (OTP, MPIN, Password, Google, Microsoft,
+  Meta) behind a single configurable flow.
