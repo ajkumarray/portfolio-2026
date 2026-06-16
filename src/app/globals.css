@@ -5,50 +5,52 @@
 
 /* ---------- Design tokens ---------- */
 :root {
-  --radius: 0.75rem;
+  /* Squarer corners for a more corporate, BCG-like feel */
+  --radius: 0.5rem;
 
-  /* Soft, warm-neutral light theme */
-  --background: #faf9f7;
-  --foreground: #21201c;
+  /* Clean, light-first neutrals */
+  --background: #f7f9f8;
+  --foreground: #131815;
 
   --card: #ffffff;
-  --card-foreground: #21201c;
+  --card-foreground: #131815;
 
-  --muted: #f1efeb;
-  --muted-foreground: #6f6b64;
+  --muted: #eef2f0;
+  --muted-foreground: #5b6560;
 
-  --border: #e7e3dc;
-  --input: #e7e3dc;
-  --ring: #5b5bd6;
+  --border: #e1e7e4;
+  --input: #e1e7e4;
+  --ring: #0e7c5a;
 
-  /* Muted indigo accent */
-  --primary: #5b5bd6;
+  /* Deep emerald accent */
+  --primary: #0e7c5a;
   --primary-foreground: #ffffff;
 
-  --accent: #ecebfb;
-  --accent-foreground: #4f46e5;
+  --accent: #e6f3ec;
+  --accent-foreground: #0a5e44;
 }
 
 .dark {
-  /* Warm near-black dark theme */
-  --background: #121113;
-  --foreground: #ededec;
+  /* Deep, cool near-black with a faint green cast */
+  --background: #0c100e;
+  --foreground: #e8ece9;
 
-  --card: #1a181c;
-  --card-foreground: #ededec;
+  --card: #141a17;
+  --card-foreground: #e8ece9;
 
-  --muted: #1d1b20;
-  --muted-foreground: #9d9aa3;
+  --muted: #171d1a;
+  --muted-foreground: #9aa39e;
 
-  --border: #2a2730;
-  --input: #2a2730;
-  --ring: #8284f4;
+  --border: #252c28;
+  --input: #252c28;
+  --ring: #34b98c;
 
-  --primary: #8284f4;
-  --primary-foreground: #14131a;
+  /* Brighter emerald for contrast on dark */
+  --primary: #2fae82;
+  --primary-foreground: #07140f;
 
-  --accent: #211f2e;
-  --accent-foreground: #c7c5f7;
+  --accent: #122a20;
+  --accent-foreground: #8fe3c4;
 }
 
 /* ---------- Map tokens to Tailwind ---------- */

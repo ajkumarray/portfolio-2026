@@ -39,7 +39,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={1}>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="max-w-4xl text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               Hi, I&apos;m {siteConfig.name.split(" ")[0]} — I build full-stack
               products that are configurable, fast, and built to reuse.
             </h1>

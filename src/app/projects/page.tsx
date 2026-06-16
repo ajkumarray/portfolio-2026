@@ -19,7 +19,7 @@ export default function ProjectsPage() {
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Projects
         </p>
-        <h1 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mt-2 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
           Things I&apos;ve built on my own.
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">

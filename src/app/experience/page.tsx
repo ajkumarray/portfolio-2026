@@ -19,7 +19,7 @@ export default function ExperiencePage() {
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Experience
         </p>
-        <h1 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mt-2 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
           What I&apos;ve built at work.
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
