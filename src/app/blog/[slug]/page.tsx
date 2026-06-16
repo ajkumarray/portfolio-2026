@@ -53,7 +53,7 @@ export default async function BlogPostPage({
             <span>·</span>
             <span>{post.readingTime}</span>
           </div>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
             {title}
           </h1>
           <div className="mt-4 flex flex-wrap gap-1.5">

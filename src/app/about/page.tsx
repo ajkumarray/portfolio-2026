@@ -104,7 +104,7 @@ export default function AboutPage() {
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           About
         </p>
-        <h1 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mt-2 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
           Full-stack engineer who likes turning messy problems into reusable
           systems.
         </h1>
