@@ -58,18 +58,20 @@ export default async function ProjectPage({
         </h1>
         <p className="mt-4 text-lg leading-8 text-muted-foreground">{summary}</p>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          {repo && (
-            <Button href={repo} variant="outline" size="sm">
-              <GithubIcon className="h-4 w-4" /> Source
-            </Button>
-          )}
-          {demo && (
-            <Button href={demo} variant="outline" size="sm">
-              <ExternalLink className="h-4 w-4" /> Live demo
-            </Button>
-          )}
-        </div>
+        {(repo || demo) && (
+          <div className="mt-6 flex flex-wrap gap-3">
+            {repo && (
+              <Button href={repo} variant="outline" size="sm">
+                <GithubIcon className="h-4 w-4" /> Source
+              </Button>
+            )}
+            {demo && (
+              <Button href={demo} variant="outline" size="sm">
+                <ExternalLink className="h-4 w-4" /> Live demo
+              </Button>
+            )}
+          </div>
+        )}
       </header>
 
       {/* Metrics band */}
